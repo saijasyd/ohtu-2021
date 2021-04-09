@@ -22,7 +22,7 @@ def main():
 
     print(f"Players from {country} {timestamp.strftime('%Y-%m-%d %H:%M:%S.%f')}\n")
 
-    for player in players:
+    for player in sorted(players, key=lambda player: player.points, reverse=True):
         if player.get_nationality() == country:
             print(player)
 
