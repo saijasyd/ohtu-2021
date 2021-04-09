@@ -6,8 +6,7 @@ class Player:
         self.goals = goals
         self.assists = assists
 
-    def get_nationality(self):
-        return self.nationality
+
 
     @property
     def points(self):
