@@ -56,7 +56,15 @@ Login After Failed Registration
     Set Password Confirmation  tii4
     Submit Register
     Register Should Fail With Message  Password is invalid
-    Register Page Should Be Open
+    Go To Login Page
+    Login Page Should Be Open
+    Set Username  tuija
+    Set Password  tii4
+    Submit Credentials
+    Login Should Fail With Message  Invalid username or password
+
+
+
     
 
 *** Keywords ***
