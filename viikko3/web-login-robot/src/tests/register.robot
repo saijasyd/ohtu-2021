@@ -1,5 +1,6 @@
 *** Settings ***
 Resource  resource.robot
+Resource  login_resource.robot
 Suite Setup  Open And Configure Browser
 Suite Teardown  Close Browser
 Test Setup  Create User And Go To Register Page
@@ -35,6 +36,29 @@ Register With Nonmatching Password And Password Confirmation
     Submit Register
     Register Should Fail With Message  Password is invalid
 
+Login After Successful Registration
+    Set Username  tiina
+    Set Password  tiina123
+    Set Password Confirmation  tiina123
+    Submit Register
+    Register Should Succeed
+    Go To Login Page
+    Login Page Should Be Open
+    Set Username  tiina
+    Set Password  tiina123
+    Submit Credentials
+    Login Should Succeed
+
+
+Login After Failed Registration
+    Set Username  tuija
+    Set Password  tii4
+    Set Password Confirmation  tii4
+    Submit Register
+    Register Should Fail With Message  Password is invalid
+    Register Page Should Be Open
+    
+
 *** Keywords ***
 Register Should Succeed
     Welcome Page Should Be Open
@@ -47,13 +71,13 @@ Register Should Fail With Message
 Submit Register
     Click Button  Register
 
-Set Username
-    [Arguments]  ${username}
-    Input Text  username  ${username}
+# Set Username
+#     [Arguments]  ${username}
+#     Input Text  username  ${username}
 
-Set Password
-    [Arguments]  ${password}
-    Input Password  password  ${password}
+# Set Password
+#     [Arguments]  ${password}
+#     Input Password  password  ${password}
 
 Set Password Confirmation
     [Arguments]  ${password}
