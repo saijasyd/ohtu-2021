@@ -27,14 +27,6 @@ Login With Nonexistent Username
 
 
 *** Keywords ***
-Login Should Succeed
-    Main Page Should Be Open
-
-Login Should Fail With Message
-    [Arguments]  ${message}
-    Login Page Should Be Open
-    Page Should Contain  ${message}
-
 Create User And Go To Login Page
     Create User  kalle  kalle123
     Go To Login Page
